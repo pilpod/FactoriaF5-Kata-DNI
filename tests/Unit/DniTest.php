@@ -42,7 +42,14 @@ class DniTest extends TestCase
 
     public function test_char_cannot_U_I_O_Ñ()
     {
-        
+        $stringChar = '00000000P';
+        $dni = new Dni($stringChar);
+
+        //Comparar la letra con las prohibidas
+        $result = $dni->compareChar();
+
+        $this->assertEquals(true, $result);
+
     }
 
 }
