@@ -65,6 +65,65 @@ class Dni {
         return true;
     }
 
+    public function retrieveChar()
+    {
+        $table = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'];
+
+        $char = '';
+
+        //modulus = resto
+        $modulus = $this->dniNumb % 23;
+
+        for ($i=0; $i <= count($table) ; $i++) { 
+            if($i == $modulus) {
+                $char = $table[$i];
+                break;
+            }
+        }
+
+        return $char;
+
+    }
+
+    public function isNie()
+    {
+        $charDni = str_split($this->dniNumb);
+
+        if($charDni[0] == 'X' || $charDni[0] == 'Y' || $charDni[0] == 'Z') {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function changeCharByNumber()
+    {
+        $dniNumb = $this->dniNumb;
+        $firstNumb = 0;
+
+        $arrayChar = str_split($dniNumb);
+
+        switch ($arrayChar[0]) {
+            case 'X':
+                $firstNumb = 0;
+                break;
+
+            case 'Y':
+                $firstNumb = 1;
+                break;
+
+            case 'Z':
+                $firstNumb = 2;
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+
+        return $firstNumb;
+    }
+
 }
 
 ?>

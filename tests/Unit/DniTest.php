@@ -52,6 +52,39 @@ class DniTest extends TestCase
 
     }
 
+    public function test_retrieve_last_char()
+    {
+        //dado un número
+        $numb = '00000000';
+        $char = 'T';
+        $dni = new Dni($numb);
+        //obtener la letra del DNI
+        $result = $dni->retrieveChar();
+
+        //comprobar que la letra sea la correct
+        $this->assertEquals($char, $result);
+    }
+
+    public function test_is_a_NIE()
+    {
+        $numb = 'Y0000000T';
+        $dni = new Dni($numb);
+
+        $result = $dni->isNie();
+
+        $this->assertEquals(true, $result);
+    }
+
+    public function test_replace_XYZ_by_number()
+    {
+        $dniNumb = 'X0000000T';
+        $dni = new Dni($dniNumb);
+
+        $result = $dni->changeCharByNumber();
+
+        $this->assertEquals('00000000T', $result);
+    }
+
 }
 
 ?>
