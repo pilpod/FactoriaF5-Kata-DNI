@@ -34,6 +34,12 @@ class Dni {
         return false;
     }
 
+    public function getLastChar()
+    {
+        $lastChar = substr($this->dniNumb, -1);
+        return $lastChar;
+    }
+
     public function lastCharIsString(): bool
     {
         $lastChar = $this->getLastChar();
@@ -43,12 +49,6 @@ class Dni {
         }
 
         return false;
-    }
-
-    public function getLastChar()
-    {
-        $lastChar = substr($this->dniNumb, -1);
-        return $lastChar;
     }
 
     public function compareChar(): bool
@@ -83,6 +83,18 @@ class Dni {
 
         return $char;
 
+    }
+
+    public function validateLastChar(): bool
+    {
+        $lastChar = $this->getLastChar();
+        $givenChar = $this->retrieveChar();
+
+        if($lastChar === $givenChar) {
+            return true;
+        }
+
+        return false;
     }
 
     public function isNie()

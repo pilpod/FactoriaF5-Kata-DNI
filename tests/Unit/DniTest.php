@@ -5,8 +5,8 @@ use App\Dni;
 
 use PHPUnit\Framework\TestCase;
 
-class DniTest extends TestCase
-{
+class DniTest extends TestCase {
+    
     public function test_is_a_string_with_9_charac()
     {
         $stringChar = '123456789';
@@ -63,6 +63,16 @@ class DniTest extends TestCase
 
         //comprobar que la letra sea la correct
         $this->assertEquals($char, $result);
+    }
+
+    public function test_last_char_is_valide()
+    {
+        $dni = new Dni('00000000T');
+
+        $response = $dni->validateLastChar();
+
+        $this->assertEquals(true, $response);
+
     }
 
     public function test_is_a_NIE()
