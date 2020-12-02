@@ -121,7 +121,9 @@ class Dni {
                 break;
         }
 
-        return $firstNumb;
+        $arrayChar[0] = $firstNumb;
+        $nieByValidation = implode('', $arrayChar);
+        return $nieByValidation;
     }
 
 }
